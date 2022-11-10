@@ -13,17 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.compose.ExperimentalLifecycleComposeApi
 import com.example.coreui.ui.theme.TodocomposeTheme
 import com.example.model.Task
 import org.koin.androidx.compose.getViewModel
 import java.text.SimpleDateFormat
 import java.util.*
 
-@OptIn(ExperimentalLifecycleComposeApi::class)
 @Composable
 fun ToDoRoute(
-    modifier: Modifier = Modifier,
     viewModel: ToDoViewModel = getViewModel()
 ) {
     val tasksState by viewModel.tasksUiState.collectAsState(initial = TasksUiState.Loading)

@@ -4,6 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
+import com.example.settings.navigation.settingsScreen
 import com.example.todo.navigation.toDoNavigationRoute
 import com.example.todo.navigation.toDoScreen
 
@@ -20,6 +21,6 @@ fun ToDoNavHost(
         modifier = modifier
     ) {
         toDoScreen()
-//        settingsScreen()
+        settingsScreen()
     }
 }
