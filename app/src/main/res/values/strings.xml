@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">todocompose</string>
+    <string name="todo">To do</string>
+    <string name="settings">Settings</string>
+</resources>
