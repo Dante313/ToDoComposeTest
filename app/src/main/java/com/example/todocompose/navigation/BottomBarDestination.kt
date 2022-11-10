@@ -1,25 +1,21 @@
 package com.example.todocompose.navigation
 
 import androidx.annotation.StringRes
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.List
-import androidx.compose.material.icons.filled.Settings
-import androidx.compose.ui.graphics.vector.ImageVector
+import com.example.coreui.ui.theme.ToDoIcons
 import com.example.todocompose.R
+import com.example.coreui.ui.theme.Icon.DrawableResourceIcon
+import com.example.coreui.ui.theme.Icon
 
 enum class BottomBarDestination(
-    val icon: ImageVector,
-    @StringRes val iconTextId: Int,
-    @StringRes val titleTextId: Int
+    val icon: Icon,
+    @StringRes val iconTextId: Int
 ) {
     TO_DO(
-        icon = Icons.Default.List,
-        iconTextId = R.string.todo,
-        titleTextId = R.string.todo
+        icon = DrawableResourceIcon(ToDoIcons.Task),
+        iconTextId = R.string.todo
     ),
     SETTINGS(
-        icon = Icons.Default.Settings,
-        iconTextId = R.string.settings,
-        titleTextId = R.string.settings
+        icon = DrawableResourceIcon(ToDoIcons.Settings),
+        iconTextId = R.string.settings
     )
 }

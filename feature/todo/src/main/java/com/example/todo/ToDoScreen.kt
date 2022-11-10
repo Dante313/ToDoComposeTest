@@ -1,11 +1,14 @@
 package com.example.todo
 
+import android.annotation.SuppressLint
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -25,12 +28,19 @@ fun ToDoRoute(
 ) {
     val tasksState by viewModel.tasksUiState.collectAsState(initial = TasksUiState.Loading)
 
-    ToDoScreen(tasksUiState = tasksState)
+    ToDoScreen(tasksUiState = tasksState, onAddClick = {})
 }
 
+@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun ToDoScreen(tasksUiState: TasksUiState) {
-    Surface {
+fun ToDoScreen(tasksUiState: TasksUiState, onAddClick: () -> Unit) {
+    Scaffold(
+        floatingActionButton = {
+            FloatingActionButton(onClick = onAddClick) {
+                Icon(Icons.Default.Add, "")
+            }
+        }
+    ) {
         if (tasksUiState is TasksUiState.Success) {
             TaskList(tasks = tasksUiState.tasks)
         }

@@ -3,16 +3,19 @@ package com.example.todocompose.ui
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.consumedWindowInsets
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Icon
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavDestination
 import androidx.navigation.NavDestination.Companion.hierarchy
 import com.example.coreui.ui.navigation.ToDoNavigationBar
 import com.example.coreui.ui.navigation.ToDoNavigationBarItem
+import com.example.coreui.ui.theme.Icon
 import com.example.todocompose.navigation.BottomBarDestination
 import com.example.todocompose.navigation.ToDoNavHost
 
@@ -53,7 +56,19 @@ fun ToDoBottomBar(
             ToDoNavigationBarItem(
                 selected = selected,
                 onClick = { onNavigateToDestination(destination) },
-                icon = { destination.icon },
+                icon = {
+                    when (val icon = destination.icon) {
+                        is Icon.ImageVectorIcon -> Icon(
+                            imageVector = icon.imageVector,
+                            contentDescription = null
+                        )
+
+                        is Icon.DrawableResourceIcon -> Icon(
+                            painter = painterResource(id = icon.id),
+                            contentDescription = null
+                        )
+                    }
+                },
                 label = { Text(stringResource(destination.iconTextId)) }
             )
         }
