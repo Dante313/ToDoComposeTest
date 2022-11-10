@@ -23,19 +23,19 @@ class ToDoViewModel(private val taskRepository: TaskRepository) : ViewModel() {
         }
     }
 
-    private fun insertTask(task: Task) {
+    fun insertTask(task: Task) {
         viewModelScope.launch { taskRepository.insertTask(task) }
     }
 
-    private fun updateTask(task: Task) {
+    fun updateTask(task: Task) {
         viewModelScope.launch { taskRepository.updateTask(task) }
     }
 
-    private fun deleteTask(task: Task) {
+    fun deleteTask(task: Task) {
         viewModelScope.launch { taskRepository.deleteTask(task) }
     }
 
-    private fun deleteAllTasks() {
+    fun deleteAllTasks() {
         viewModelScope.launch { taskRepository.deleteAllTasks() }
     }
 }

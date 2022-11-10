@@ -12,8 +12,8 @@ fun NavController.navigateToDo(navOptions: NavOptions? = null) {
     this.navigate(toDoNavigationRoute, navOptions)
 }
 
-fun NavGraphBuilder.toDoScreen() {
+fun NavGraphBuilder.toDoScreen(navController: NavController) {
     composable(route = toDoNavigationRoute) {
-        ToDoRoute()
+        ToDoRoute(navController)
     }
 }

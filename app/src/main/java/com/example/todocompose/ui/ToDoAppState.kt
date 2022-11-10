@@ -12,6 +12,7 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navOptions
 import com.example.settings.navigation.navigateToSettings
 import com.example.settings.navigation.settingsNavigationRoute
+import com.example.todo.navigation.addTaskNavigation
 import com.example.todo.navigation.navigateToDo
 import com.example.todo.navigation.toDoNavigationRoute
 import com.example.todocompose.navigation.BottomBarDestination
@@ -43,6 +44,9 @@ class ToDoAppState(
 
     val bottomBarDestinations: List<BottomBarDestination> = BottomBarDestination.values().asList()
 
+    val shouldShowBottomBar: Boolean
+        @Composable get() = currentDestination?.route?.let { it != addTaskNavigation } ?: true
+
     fun navigateToBottomBarDestination(bottomBarDestination: BottomBarDestination) {
         val bottomBarNavOptions = navOptions {
             popUpTo(navController.graph.findStartDestination().id) {
@@ -56,9 +60,5 @@ class ToDoAppState(
             BottomBarDestination.TO_DO -> navController.navigateToDo(bottomBarNavOptions)
             BottomBarDestination.SETTINGS -> navController.navigateToSettings(bottomBarNavOptions)
         }
-    }
-
-    fun onBackClick() {
-        navController.popBackStack()
     }
 }

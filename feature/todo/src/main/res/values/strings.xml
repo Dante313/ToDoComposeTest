@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Add Task Strings -->
+    <string name="task_title">Title</string>
+    <string name="task_subtitle">Description</string>
+    <string name="task_is_done">Done</string>
+    <string name="cancel_task">Cancel</string>
+    <string name="add_task">Add</string>
+</resources>

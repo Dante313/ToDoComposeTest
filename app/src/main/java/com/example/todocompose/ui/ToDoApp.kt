@@ -27,7 +27,7 @@ fun ToDoApp(
     Scaffold(
         contentColor = MaterialTheme.colors.onBackground,
         bottomBar = {
-            ToDoBottomBar(
+            if (appState.shouldShowBottomBar) ToDoBottomBar(
                 destinations = appState.bottomBarDestinations,
                 onNavigateToDestination = appState::navigateToBottomBarDestination,
                 currentDestination = appState.currentDestination
@@ -36,7 +36,6 @@ fun ToDoApp(
     ) { padding ->
         ToDoNavHost(
             navController = appState.navController,
-            onBack = appState::onBackClick,
             modifier = Modifier
                 .padding(padding)
                 .consumedWindowInsets(padding)

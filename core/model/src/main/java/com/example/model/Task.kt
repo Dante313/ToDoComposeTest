@@ -4,6 +4,6 @@ data class Task(
     val id: Long = 0,
     val title: String,
     val subtitle: String,
-    val createdAt: Long,
+    val createdAt: Long = System.currentTimeMillis(),
     val isDone: Boolean,
 )
